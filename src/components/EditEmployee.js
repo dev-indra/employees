@@ -1,9 +1,11 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function EditEmployee() {
+function EditEmployee(props) {
   const [show, setShow] = useState(false);
+
+  const [name, setName] = useState(props.name);
+  const [role, setRole] = useState(props.role);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,7 +29,14 @@ function EditEmployee() {
           <Modal.Title>Update Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <form id="edit-employee-form" className="bg-white px-8 pt-6 pb-8">
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                props.updateEmployee(props.id, name, role)
+                handleClose();
+              }}
+              id="edit-employee-form" 
+              className="bg-white px-8 pt-6 pb-8">
               <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
@@ -38,7 +47,8 @@ function EditEmployee() {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="Name"
                   type="text"
-                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -51,7 +61,8 @@ function EditEmployee() {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="Role"
                   type="text"
-                  placeholder="Role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
                 />
               </div>
             </form>
