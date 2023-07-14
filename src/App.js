@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Employees from "./pages/Employees";
 import Customers from "./pages/Customers";
-import About from "./pages/About";
+import Dictionary from "./pages/Dictionary";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/customers" element={<Customers />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/dictionary" element={<Dictionary />} />
         </Routes>
       </Header>
     </Router>
