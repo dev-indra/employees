@@ -59,7 +59,7 @@ function Employees() {
   }
 
   return (
-    <div className="App bg-slate-100 min-h-screen">
+    <div className="">
       <div className="flex flex-wrap justify-center">
         {employee.map((emp) => (
           <Employee key={uuidv4()} {...emp} updateEmployee={updateEmployee} />
